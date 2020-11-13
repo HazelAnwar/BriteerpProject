@@ -52,7 +52,7 @@ public class BrowserUtils {
      * @return
      */
     public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDiver(), timeToWaitInSec);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
         return wait.until(ExpectedConditions.visibilityOf(element));
     }
     /**
@@ -61,8 +61,8 @@ public class BrowserUtils {
      * @param element
      */
     public static void clickWithJS(WebElement element) {
-        ((JavascriptExecutor) Driver.getDiver()).executeScript("arguments[0].scrollIntoView(true);", element);
-        ((JavascriptExecutor) Driver.getDiver()).executeScript("arguments[0].click();", element);
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
     /**
      * Waits for provided element to be clickable
@@ -72,7 +72,7 @@ public class BrowserUtils {
      * @return
      */
     public static WebElement waitForClickablility(WebElement element, int timeout) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDiver(), timeout);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeout);
         return wait.until(ExpectedConditions.elementToBeClickable(element));
     }
     //    PLEASE INSERT THIS METHOD INTO BROWSER UTILS
@@ -89,7 +89,7 @@ public class BrowserUtils {
         SimpleDateFormat df = new SimpleDateFormat("-yyyy-MM-dd-HH-mm");
         String date = df.format(new Date());
         // TakesScreenshot ---> interface from selenium which takes screenshots
-        TakesScreenshot ts = (TakesScreenshot) Driver.getDiver();
+        TakesScreenshot ts = (TakesScreenshot) Driver.getDriver();
         File source = ts.getScreenshotAs(OutputType.FILE);
         // full path to the screenshot location
         //where screenshot will be stored
@@ -110,7 +110,7 @@ public class BrowserUtils {
      * @param webElement of element
      */
     public static void clickWithWait(WebElement webElement) {
-        Wait wait = new FluentWait<>(Driver.getDiver())
+        Wait wait = new FluentWait<>(Driver.getDriver())
                 .withTimeout(Duration.ofSeconds(15))
                 .pollingEvery(Duration.ofMillis(800))
                 .ignoring(NoSuchElementException.class)
@@ -138,7 +138,7 @@ public class BrowserUtils {
     public static void waitForPageToLoad(long timeOutInSeconds) {
         ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
         try {
-            WebDriverWait wait = new WebDriverWait(Driver.getDiver(), timeOutInSeconds);
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeOutInSeconds);
             wait.until(expectation);
         } catch (Throwable error) {
             error.printStackTrace();
@@ -150,7 +150,7 @@ public class BrowserUtils {
      * @param pageTitle
      */
     public static void waitForPageTitle(String pageTitle) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDiver(), 10);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
         wait.until(ExpectedConditions.titleIs(pageTitle));
     }
     /**
