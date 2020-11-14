@@ -1,5 +1,6 @@
 package Pages;
 
+import Utils.BrowserUtils;
 import Utils.ConfigurationReader;
 import Utils.Driver;
 import org.openqa.selenium.By;
@@ -34,5 +35,15 @@ public class BasePage {
         }
     }
 
+    /**
+     *
+     * @param options : Discuss, Calender, Notes, Contact, CRM, Sales, Website, Inventory, Repairs,
+     *                Events, Employees, Leaves, More
+     */
+    public void clickMenuBarOptions(String options){
+        WebElement optionsOfMenuBar=Driver.getDriver().findElement(By.xpath("//span[contains(text(),'"+options+"')]"));
+        BrowserUtils.clickWithWait(optionsOfMenuBar);
+
+    }
 
 }
