@@ -1,6 +1,6 @@
 package Pages;
 
-public class why___ {
+public class OMG {
     public static void main(String[] args) {
 
         System.out.println("hello");
