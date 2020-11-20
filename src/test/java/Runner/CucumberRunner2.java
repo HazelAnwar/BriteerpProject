@@ -7,15 +7,14 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/feature/sales/quotations",
+        features = "src/test/resources/feature/sales/customer",
         glue = "StepDefinition",
         tags ="" ,
         dryRun = true,
-        publish = true,
-        plugin = "html:target/report.html"
+        publish = true,plugin = "html:target/report.html"
 
 )
 
-public class CucumberRunner {
+public class CucumberRunner2 {
 
 }
