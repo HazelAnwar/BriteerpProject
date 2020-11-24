@@ -13,13 +13,14 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//input[@id='login']")
     private WebElement userNameInput;
 
-    @FindBy(id = "//input[@id='password']")
+    @FindBy(id = "password")
     private WebElement passwordInput;
+
 
     public void login(){
         Driver.getDriver().get(ConfigurationReader.getProperties("BriteerpURL"));
-        userNameInput.sendKeys(ConfigurationReader.getProperties("BriteerpUsername"));
-        passwordInput.sendKeys(ConfigurationReader.getProperties("BriteerpPassword")+ Keys.ENTER);
+        userNameInput.sendKeys(ConfigurationReader.getProperties("BriteerpUsername")+ Keys.ENTER);
+        passwordInput.sendKeys(ConfigurationReader.getProperties("BriteerpPassword"), Keys.ENTER);
         WebElement homePage=Driver.getDriver().findElement(By.xpath("//li[contains(text(),'#Inbox')]"));
         if (homePage.isDisplayed()){
             System.out.println("You are on the Home Page. **Login Success** ");

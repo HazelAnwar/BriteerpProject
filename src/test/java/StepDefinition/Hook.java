@@ -27,7 +27,7 @@ public class Hook {
             System.out.println("Test completed!");
         }
         System.out.println("##############################");
-        Driver.getDriver().close(); // Driver.closeDriver();
+//        Driver.getDriver().close(); // Driver.closeDriver();
     }
 
 }
